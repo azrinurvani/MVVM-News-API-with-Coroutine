@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MVVM News API with Coroutine</string>
+    <string name="breaking_news_title_menu">Breaking News</string>
+    <string name="saved_news_title_menu">Saved News</string>
+    <string name="search_news_title_menu">Search News</string>
+</resources>
