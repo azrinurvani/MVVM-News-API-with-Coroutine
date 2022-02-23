@@ -1,4 +1,4 @@
-package com.mobile.azri.mvvmnewsapiwithcoroutine.model
+package com.mobile.azri.mvvmnewsapiwithcoroutine.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

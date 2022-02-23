@@ -1,4 +1,4 @@
-package com.mobile.azri.mvvmnewsapiwithcoroutine.model
+package com.mobile.azri.mvvmnewsapiwithcoroutine.models
 
 data class NewsResponse(
     val articles: List<Article>,

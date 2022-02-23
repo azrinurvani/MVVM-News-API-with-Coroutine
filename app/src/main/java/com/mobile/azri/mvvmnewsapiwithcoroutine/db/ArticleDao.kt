@@ -2,7 +2,7 @@ package com.mobile.azri.mvvmnewsapiwithcoroutine.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.mobile.azri.mvvmnewsapiwithcoroutine.model.Article
+import com.mobile.azri.mvvmnewsapiwithcoroutine.models.Article
 
 @Dao
 interface ArticleDao {

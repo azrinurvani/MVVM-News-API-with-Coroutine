@@ -1,6 +1,6 @@
 package com.mobile.azri.mvvmnewsapiwithcoroutine.api
 
-import com.mobile.azri.mvvmnewsapiwithcoroutine.model.NewsResponse
+import com.mobile.azri.mvvmnewsapiwithcoroutine.models.NewsResponse
 import com.mobile.azri.mvvmnewsapiwithcoroutine.util.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
