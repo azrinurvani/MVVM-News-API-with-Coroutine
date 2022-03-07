@@ -7,14 +7,14 @@ import com.mobile.azri.mvvmnewsapiwithcoroutine.R
 import com.mobile.azri.mvvmnewsapiwithcoroutine.ui.NewsActivity
 import com.mobile.azri.mvvmnewsapiwithcoroutine.ui.NewsViewModel
 
-class ArticleFragment : Fragment(R.layout.fragment_article) {
+class ArticleFragment : Fragment() {
 
-    lateinit var viewModel: NewsViewModel
+//    lateinit var viewModel: NewsViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = (activity as NewsActivity).viewModel
+//        viewModel = (activity as NewsActivity).viewModel
     }
 
 }
