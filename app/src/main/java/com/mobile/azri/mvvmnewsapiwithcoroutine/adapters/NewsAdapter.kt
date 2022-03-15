@@ -53,7 +53,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         onItemClickListener = listener
     }
 
-    inner class ArticleViewHolder(binding: ItemArticlePreviewBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ArticleViewHolder(private val binding: ItemArticlePreviewBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind (article: Article){
 
@@ -63,12 +63,15 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
                 tvTitle.text = article.title
                 tvDescription.text = article.description
                 tvPublishedAt.text = article.publishedAt
-                setOnItemClickListener {
-                    onItemClickListener?.let { it(article) }
+            }.root.setOnClickListener {
+                onItemClickListener?.let {
+                    it(article)
                 }
             }
-
-
         }
+    }
+
+    companion object{
+        private const val TAG = "NewsAdapter"
     }
 }

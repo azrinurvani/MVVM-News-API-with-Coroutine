@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobile.azri.mvvmnewsapiwithcoroutine.R
 import com.mobile.azri.mvvmnewsapiwithcoroutine.adapters.NewsAdapter
@@ -51,6 +52,16 @@ class SearchNewsFragment : Fragment() {
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
         viewModel = ViewModelProvider(this,viewModelProviderFactory).get(NewsViewModel::class.java)
         setupRecyclerView()
+
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article",it)
+            }
+            findNavController().navigate(
+                R.id.action_breakingNewsFragment_to_articleFragment,
+                bundle
+            )
+        }
 
         var job: Job? = null
 
