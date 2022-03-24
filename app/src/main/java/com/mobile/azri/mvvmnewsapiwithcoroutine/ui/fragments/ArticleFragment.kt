@@ -7,13 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.mobile.azri.mvvmnewsapiwithcoroutine.databinding.FragmentArticleBinding
+import com.mobile.azri.mvvmnewsapiwithcoroutine.db.ArticleDatabase
+import com.mobile.azri.mvvmnewsapiwithcoroutine.repository.NewsRepository
+import com.mobile.azri.mvvmnewsapiwithcoroutine.ui.NewsViewModel
+import com.mobile.azri.mvvmnewsapiwithcoroutine.ui.NewsViewModelProviderFactory
 import kotlin.math.log
 
 class ArticleFragment : Fragment() {
 
-//    lateinit var viewModel: NewsViewModel
+    private lateinit var viewModel: NewsViewModel
     private var _binding: FragmentArticleBinding? = null
     private val binding get() = _binding
 
@@ -32,7 +38,12 @@ class ArticleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 //        viewModel = (activity as NewsActivity).viewModel
-//        val article = arguments?.let { ArticleFragmentArgs.fromBundle(it).article }
+
+        val newsRepository = NewsRepository(ArticleDatabase(requireContext()))
+        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        viewModel = ViewModelProvider(this,viewModelProviderFactory).get(NewsViewModel::class.java)
+
+
         val article = args.article
 
         Log.d(TAG, "onViewCreated: url -> ${article.url}")
@@ -40,6 +51,12 @@ class ArticleFragment : Fragment() {
             webViewClient = WebViewClient()
             loadUrl(article.url)
         }
+
+        binding?.fab?.setOnClickListener{
+            viewModel.savedArticle(article)
+            Snackbar.make(view,"Article saved successfully",Snackbar.LENGTH_LONG).show()
+        }
+
 
 
     }

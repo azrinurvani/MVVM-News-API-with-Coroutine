@@ -13,7 +13,7 @@ interface ArticleDao {
 
     /*pada coroutine wajib memakai method suspend*/
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertArticle(article: Article) : Long
+    suspend fun upsert(article: Article) : Long
 
     /*Method dengan return Live Data tidak bisa bekerja di method suspend*/
     @Query("SELECT * FROM articles")
