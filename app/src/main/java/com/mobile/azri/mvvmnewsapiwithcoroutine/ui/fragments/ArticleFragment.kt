@@ -49,7 +49,7 @@ class ArticleFragment : Fragment() {
         Log.d(TAG, "onViewCreated: url -> ${article.url}")
         binding?.webView?.apply {
             webViewClient = WebViewClient()
-            loadUrl(article.url)
+            article.url?.let { loadUrl(it) }
         }
 
         binding?.fab?.setOnClickListener{

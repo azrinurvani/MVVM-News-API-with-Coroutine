@@ -9,7 +9,8 @@ import com.mobile.azri.mvvmnewsapiwithcoroutine.models.Article
 
 @Database(
     entities = [Article::class],
-    version = 1
+    version = 2,
+    exportSchema = true
 )
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase(){
