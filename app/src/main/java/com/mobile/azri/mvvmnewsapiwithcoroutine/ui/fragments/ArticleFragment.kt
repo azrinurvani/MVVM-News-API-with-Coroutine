@@ -40,7 +40,7 @@ class ArticleFragment : Fragment() {
 //        viewModel = (activity as NewsActivity).viewModel
 
         val newsRepository = NewsRepository(ArticleDatabase(requireContext()))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = NewsViewModelProviderFactory(requireActivity().application,newsRepository)
         viewModel = ViewModelProvider(this,viewModelProviderFactory).get(NewsViewModel::class.java)
 
 
